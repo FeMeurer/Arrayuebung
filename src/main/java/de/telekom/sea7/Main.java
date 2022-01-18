@@ -54,6 +54,7 @@ public class Main {
 		System.out.println("All values of Array 2: " + intList2.toString());
 		System.out.println("Number of positions used in array 2: " + intList2.countUsed());
 		
+	    
 	}
 
 }
