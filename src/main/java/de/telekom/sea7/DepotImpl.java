@@ -11,15 +11,14 @@ public class DepotImpl implements Depot, Iterable {
 	
 	// Fügt eine Objektinstanz an die nächste freie Stelle des Arrays
 	@Override
-	public boolean add(Object object) {
+	public void add(Object object) throws ArrayFullException {
 		for (int i = 0; i < depotArray.length; i++) {
 			if (depotArray[i] == null) {
 				depotArray[i] = object;
-				return true;
+				return;
 			}
 		}
-		System.out.println("Array full.");
-		return false;
+		throw new ArrayFullException("Das Array ist voll.");
 	}
 	
 	// Setzt alle Stellen des Arrays auf null
@@ -33,9 +32,8 @@ public class DepotImpl implements Depot, Iterable {
 	// Gibt das Objekt von der angegebenen Stelle (index) zurück
 	@Override
 	public Object get(int index) {
-		if ((index < 0) | (depotArray.length <= index)) {
-			System.out.println("Out of bounce " + index);
-			return null;
+		if ((index < 0) || (depotArray.length <= index)) {
+			throw new IndexOutOfRangeException("");
 		} else {
 			return depotArray[index];
 		}

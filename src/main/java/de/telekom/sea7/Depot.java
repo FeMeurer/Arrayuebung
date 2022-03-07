@@ -5,7 +5,7 @@ import java.util.Iterator;
 public interface Depot extends Iterable {
 
 	// Fügt eine Objektinstanz an die nächste freie Stelle des Arrays
-	boolean add(Object object);
+	void add(Object object) throws ArrayFullException;
 
 	// Setzt alle Stellen des Arrays auf null
 	void clear();

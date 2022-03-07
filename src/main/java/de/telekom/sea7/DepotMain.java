@@ -15,15 +15,21 @@ public class DepotMain {
 		Integer integer8 = 8;
 		Integer integer9 = 9;
 		
-		depot.add(integer);
-		depot.add(integer2);
-		depot.add(integer3);
-		depot.add(integer4);
-		depot.add(integer5);
-		depot.add(integer6);
-		depot.add(integer7);
-		depot.add(integer8);
-		depot.add(integer9);
+		try {
+			depot.add(integer);
+			depot.add(integer2);
+			depot.add(integer3);
+			depot.add(integer4);
+			depot.add(integer5);
+			depot.add(integer6);
+			depot.add(integer7);
+			depot.add(integer8);
+			depot.add(integer9);
+			depot.add(integer9);
+		}
+		catch(ArrayFullException e) {
+			System.out.println(e.getMessage());
+		}
 		
 		for (Object o : depot) {
 			System.out.println(o.toString());
