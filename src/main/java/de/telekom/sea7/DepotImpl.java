@@ -83,9 +83,11 @@ public class DepotImpl implements Depot, Iterable {
 	// Nutzt die equals-Methoden der jeweiligen Objektinstanz nicht die von Depot!
 	@Override
 	public boolean contains(Object object) {
-		for (int i = 0; i < depotArray.length; i++) {
-			if (depotArray[i].equals(object)) {
-				return true;
+		if (!isEmpty()) {
+			for (int i = 0; i < depotArray.length; i++) {
+				if (depotArray[i].equals(object)) {
+					return true;
+				}
 			}
 		}
 		return false;
@@ -94,11 +96,14 @@ public class DepotImpl implements Depot, Iterable {
 	// Wie contains, gibt die Position zurück, an der sich das angegebenen Objekt im Array befindet.
 	@Override
 	public int indexOf(Object object) {
-		for (int i = 0; i < depotArray.length; i++) {
-			var element = depotArray[i];             // Zeile 78 und 79 ist die Langversion Zeile 88
-			if (element.equals(object)) {
-				return i;
+		if (!isEmpty()) {
+			for (int i = 0; i < depotArray.length; i++) {
+				var element = depotArray[i];             // Zeile 78 und 79 ist die Langversion Zeile 88
+				if (element.equals(object)) {
+					return i;
+				}
 			}
+			return -1;
 		}
 		return -1;
 	}
@@ -106,13 +111,18 @@ public class DepotImpl implements Depot, Iterable {
 	// Wie contains, entfernt das Objekt aus dem Array, wenn dies gleich dem angegebenen Objekt ist.
 	@Override
 	public boolean remove(Object object) {
-		for (int i = 0; i < depotArray.length; i++) {
-			if (depotArray[i].equals(object)) {
-				depotArray[i] = null;
-				return true;
+		boolean result = false;
+		if (!isEmpty()) {
+			for (int i = 0; i < depotArray.length; i++) {
+				if (depotArray[i] != null) {
+					if (depotArray[i].equals(object)) {
+						depotArray[i] = null;
+						result = true;
+					}
+				}
 			}
 		}
-		return false;
+		return result;
 	}
 	
 	// Entfernt das Objekt von der angegebenen Arrayposition
