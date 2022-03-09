@@ -2,7 +2,7 @@ package de.telekom.sea7;
 
 import java.util.Iterator;
 
-public class DepotImpl implements Depot, Iterable {
+public class DepotImpl implements Depot, Iterable{
 	
 	private Object[] depotArray = new Object[9];
 	
@@ -32,11 +32,7 @@ public class DepotImpl implements Depot, Iterable {
 	// Gibt das Objekt von der angegebenen Stelle (index) zurück
 	@Override
 	public Object get(int index) {
-		if ((index < 0) || (depotArray.length <= index)) {
-			throw new IndexOutOfRangeException("");
-		} else {
-			return depotArray[index];
-		}
+		return depotArray[index];
 	}
 	
 	// Prüft, ob das Array voll belegt ist
